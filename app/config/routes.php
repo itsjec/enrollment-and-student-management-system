@@ -46,3 +46,4 @@ defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
 
 $router->get('/', 'UserController::index');
 $router->get('/register', 'UserController::register');
+$router->get('/admin', 'UserController::admin');

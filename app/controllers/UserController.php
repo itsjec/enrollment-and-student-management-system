@@ -10,5 +10,9 @@ class UserController extends Controller {
     public function register() {
         $this->call->view('register');
     }
+
+    public function admin(){
+        $this->call->view('index');
+    }
 }
 ?>
