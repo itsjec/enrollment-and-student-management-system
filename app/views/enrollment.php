@@ -181,87 +181,12 @@
         </div>
       </div>
     </nav>
-            <div class="container-fluid py-4">
-                <div class="row">
-                    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                    <div class="card">
-                        <div class="card-header p-3 pt-2">
-                        <div class="icon icon-lg icon-shape bg-gradient-dark shadow-dark text-center border-radius-xl mt-n4 position-absolute">
-                            <i class="material-icons opacity-10">weekend</i>
-                        </div>
-                        <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Today's Money</p>
-                            <h4 class="mb-0">$53k</h4>
-                        </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                        <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+55% </span>than lask week</p>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                    <div class="card">
-                        <div class="card-header p-3 pt-2">
-                        <div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
-                            <i class="material-icons opacity-10">person</i>
-                        </div>
-                        <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Today's Users</p>
-                            <h4 class="mb-0">2,300</h4>
-                        </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                        <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+3% </span>than lask month</p>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-                    <div class="card">
-                        <div class="card-header p-3 pt-2">
-                        <div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
-                            <i class="material-icons opacity-10">person</i>
-                        </div>
-                        <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">New Clients</p>
-                            <h4 class="mb-0">3,462</h4>
-                        </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                        <p class="mb-0"><span class="text-danger text-sm font-weight-bolder">-2%</span> than yesterday</p>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6">
-                    <div class="card">
-                        <div class="card-header p-3 pt-2">
-                        <div class="icon icon-lg icon-shape bg-gradient-info shadow-info text-center border-radius-xl mt-n4 position-absolute">
-                            <i class="material-icons opacity-10">weekend</i>
-                        </div>
-                        <div class="text-end pt-1">
-                            <p class="text-sm mb-0 text-capitalize">Sales</p>
-                            <h4 class="mb-0">$103,430</h4>
-                        </div>
-                        </div>
-                        <hr class="dark horizontal my-0">
-                        <div class="card-footer p-3">
-                        <p class="mb-0"><span class="text-success text-sm font-weight-bolder">+5% </span>than yesterday</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="row">
     <div class="col-12">
         <div class="card my-4">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
                 <div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
-                    <h6 class="text-white text-capitalize ps-3">All Students</h6>
+                    <h6 class="text-white text-capitalize ps-3">Pending Students Table</h6>
                 </div>
             </div>
             <div class="card-body px-0 pb-2">
@@ -302,16 +227,19 @@
                                 </td>
                                 <td class="align-middle text-center text-sm">
                                     <!-- Add status badge here (e.g., Enrolled, Pending) -->
-                                    <span class="badge badge-sm bg-gradient-success">Enrolled</span>
+                                    <span class="badge badge-sm bg-gradient-warning">Pending</span>
                                 </td>
                                 <td class="align-middle">
-                                    <!-- Add View button here -->
-                                    <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-original-title="View student">
-                                        <i class="fa fa-eye"> View Details</i>
+                                    <!-- Add action buttons with icons here -->
+                                    <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-original-title="Accept student">
+                                        <i class="fa fa-check"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-original-title="Delete student">
+                                        <i class="fa fa-trash"></i>
                                     </button>
                                 </td>
                             </tr>
-                            <!-- Add more rows for other students -->
+                            <!-- Add more rows for other pending students -->
                         </tbody>
                     </table>
                 </div>
@@ -321,5 +249,3 @@
 </div>
 
 </div>
-</body>
-</html>

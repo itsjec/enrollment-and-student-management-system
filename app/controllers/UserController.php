@@ -14,5 +14,13 @@ class UserController extends Controller {
     public function admin(){
         $this->call->view('index');
     }
+
+    public function managestudent(){
+        $this->call->view('managestudent');
+    }
+
+    public function enrollment(){
+        $this->call->view('enrollment');
+    }
 }
 ?>
