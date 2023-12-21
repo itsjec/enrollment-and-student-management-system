@@ -14,21 +14,82 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
     <link id="pagestyle" href="public/assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.19.0/font/bootstrap-icons.css">
+
+
+    <style>
+      /* Modal styles */
+.modal .modal-dialog {
+	max-width: 400px;
+}
+.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+	padding: 20px 30px;
+}
+.modal .modal-content {
+	border-radius: 3px;
+	font-size: 14px;
+}
+.modal .modal-footer {
+	background: #ecf0f1;
+	border-radius: 0 0 3px 3px;
+}
+.modal .modal-title {
+	display: inline-block;
+}
+.modal .form-control {
+	border-radius: 2px;
+	box-shadow: none;
+	border-color: #dddddd;
+}
+.modal textarea.form-control {
+	resize: vertical;
+}
+.modal .btn {
+	border-radius: 2px;
+	min-width: 100px;
+}	
+.modal form label {
+	font-weight: normal;
+}	
+    </style>
+    <script>
+      function acceptStudent(studentId) {
+          $.ajax({
+              url: '<?= site_URL('updateStatus'); ?>',
+              type: 'POST',
+              data: { student_id: studentId },
+              success: function (response) {
+                  // Handle success, e.g., update UI or close modal
+                  console.log(response);
+                  $('#editEmployeeModal' + studentId).modal('hide');
+              },
+              error: function (error) {
+                  // Handle error
+                  console.error(error);
+              }
+          });
+      }
+  </script>
+
 </head>
 <body>
 <body class="g-sidenav-show  bg-gray-200">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
-        <span class="ms-1 font-weight-bold text-white">Maplewood Academy</span>
+      <a class="navbar-brand m-0" href="https://demos.creative-tim.com/material-dashboard/pages/dashboard" target="_blank">
+        <img src="public/assets/img/Minsu.png" alt="Logo" height="50" class="me-2 d-inline-block align-top"> <!-- Logo above text -->
+        <span class="ms-1 font-weight-bold text-white d-inline-block align-middle">Mindoro State University</span>
       </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white " href="../admin">
+          <a class="nav-link text-white " href="admin">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -36,7 +97,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="../managestudent">
+          <a class="nav-link text-white active bg-gradient-primary" href="managestudent">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -44,18 +105,18 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../enrollment">
+          <a class="nav-link text-white " href="enrollment">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
-            <span class="nav-link-text ms-1">Enrollment</span>
+            <span class="nav-link-text ms-1">Pending Students</span>
           </a>
         </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../">
+          <a class="nav-link text-white " href="login">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -72,113 +133,10 @@
         <nav aria-label="breadcrumb">
           <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Dashboard</li>
+            <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Enrollement</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">Dashboard</h6>
+          <h6 class="font-weight-bolder mb-0">Enrollment</h6>
         </nav>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group input-group-outline">
-              <label class="form-label">Type here...</label>
-              <input type="text" class="form-control">
-            </div>
-          </div>
-          <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
-              </a>
-            </li>
-            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                <div class="sidenav-toggler-inner">
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-              </a>
-            </li>
-            <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
-              </a>
-              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New message</span> from Laur
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          13 minutes ago
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm bg-gradient-dark  me-3 ">
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New album</span> by Travis Scott
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          1 day
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>credit-card</title>
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(453.000000, 454.000000)">
-                                  <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
-                                  <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                                </g>
-                              </g>
-                            </g>
-                          </g>
-                        </svg>
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          Payment successfully completed
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          2 days
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
       </div>
     </nav>
     <div class="row">
@@ -193,54 +151,106 @@
                 <div class="table-responsive p-0">
                     <table class="table align-items-center mb-0">
                         <thead>
-                            <tr>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Code</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">First Name</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Last Name</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Course</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Section & Year</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
-                            </tr>
+                            <tr class="text-center">
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">First Name</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Last Name</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Course</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Address</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Year Level</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Section</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                          </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <!-- Add student code here -->
-                                    <span class="text-secondary text-xs font-weight-bold">STD001</span>
+                        <?php foreach($enrolledStudents as $student): ?>
+                          <tr>
+                                  <td class="text-center">
+                                      <!-- Use the first name from your data source -->
+                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['first_name']; ?></span>
+                                  </td>
+                                  <td class="text-center">
+                                      <!-- Use the last name from your data source -->
+                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['last_name']; ?></span>
+                                  </td>
+                                  <td class="text-center">
+                                      <!-- Use the course from your data source -->
+                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['course']; ?></span>
+                                  </td>
+                                  <td class="text-center">
+                                      <!-- Use the section and year from your data source -->
+                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['address']; ?></span>
+                                  </td>
+                                  <td class="text-center">
+                                      <!-- Use the section and year from your data source -->
+                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['year_level']; ?></span>
+                                  </td>
+                                  <td class="text-center">
+                                      <!-- Use the section and year from your data source -->
+                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['section']; ?></span>
+                                  </td>
+                                  <td class="align-middle text-center text-sm">
+                                      <!-- Use the status from your data source (e.g., Enrolled, Pending) -->
+                                      <span class="badge badge-sm bg-gradient-success"><?= $student['status']; ?></span>
+                                  </td>
+                                  <td class="align-middle text-center text-sm">
+                                  <a href="#editEmployeeModal<?= $student['student_id']; ?>" class="btn btn-success edit" data-toggle="modal">
+                                      <i class="material-icons" data-toggle="tooltip" title="Accept">check</i>
+                                  </a>
+                                  <a href="#deleteEmployeeModal<?= $student['student_id']; ?>" class="btn btn-danger delete" data-toggle="modal">
+                                      <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                  </a>
                                 </td>
-                                <td>
-                                    <!-- Add first name here -->
-                                    <span class="text-secondary text-xs font-weight-bold">John</span>
-                                </td>
-                                <td>
-                                    <!-- Add last name here -->
-                                    <span class="text-secondary text-xs font-weight-bold">Doe</span>
-                                </td>
-                                <td>
-                                    <!-- Add course here -->
-                                    <span class="text-secondary text-xs font-weight-bold">Computer Science</span>
-                                </td>
-                                <td>
-                                    <!-- Add section and year here -->
-                                    <span class="text-secondary text-xs font-weight-bold">A - 1</span>
-                                </td>
-                                <td class="align-middle text-center text-sm">
-                                    <!-- Add status badge here (e.g., Enrolled, Pending) -->
-                                    <span class="badge badge-sm bg-gradient-warning">Pending</span>
-                                </td>
-                                <td class="align-middle">
-                                    <!-- Add action buttons with icons here -->
-                                    <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-original-title="Accept student">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-original-title="Delete student">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <!-- Add more rows for other pending students -->
-                        </tbody>
+                              </tr>   
+
+                                <!-- Edit Modal HTML -->
+                                <div id="editEmployeeModal<?= $student['student_id']; ?>" class="modal fade">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <form action="<?= site_url('/updateStatus'); ?>" method="post">
+                                            <div class="modal-header">
+                                                <h4 class="modal-title">Accept the Student?</h4>
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to enroll this student in the course?</p>
+                                                <p class="text-warning"><small>You can always update the student record.</small></p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                <a href="<?= site_URL('updateStatus/' . $student['student_id']); ?>" class="btn btn-danger">Accept</a>
+                                            </div>
+                                          </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                              <!-- Delete Modal HTML -->
+                              <div id="deleteEmployeeModal<?= $student['student_id']; ?>" class="modal fade">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <form>
+                                              <div class="modal-header">
+                                                  <h4 class="modal-title">Discard Student Enrollment?</h4>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                              </div>
+                                              <div class="modal-body">
+                                                  <p>Are you sure you want to delete this Record?</p>
+                                                  <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                              </div>
+                                              <div class="modal-footer">
+                                                  <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                  <a href="<?= site_URL('deleteagain/' . $student['student_id']); ?>" type="submit"
+                                                      class="btn btn-danger">Delete</a>
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </div>
+
+
+                          <?php endforeach; ?>
+                      </tbody>
                     </table>
                 </div>
             </div>

@@ -14,21 +14,129 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <!-- CSS Files -->
     <link id="pagestyle" href="public/assets/css/material-dashboard.css?v=3.0.0" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
+
+    <style>
+      /* Modal styles */
+.modal .modal-dialog {
+	max-width: 400px;
+}
+.modal .modal-header, .modal .modal-body, .modal .modal-footer {
+	padding: 20px 30px;
+}
+.modal .modal-content {
+	border-radius: 3px;
+	font-size: 14px;
+}
+.modal .modal-footer {
+	background: #ecf0f1;
+	border-radius: 0 0 3px 3px;
+}
+.modal .modal-title {
+	display: inline-block;
+}
+.modal .form-control {
+	border-radius: 2px;
+	box-shadow: none;
+	border-color: #dddddd;
+}
+.modal textarea.form-control {
+	resize: vertical;
+}
+.modal .btn {
+	border-radius: 2px;
+	min-width: 100px;
+}	
+.modal form label {
+	font-weight: normal;
+}	
+
+.enrollment-form {
+            padding: 50px;
+            margin: 30px 0;
+            background-color: #fff; /* White background for the form */
+            border-radius: 8px;
+        }
+
+        .enrollment-form h1 {
+            color: #19bc9d;
+            font-weight: bold;
+            margin: 0 0 15px;
+            text-align: center;
+        }
+
+        .enrollment-form .form-control, .enrollment-form .btn {
+            min-height: 38px;
+            border-radius: 2px;
+        }
+
+        .enrollment-form .form-control:focus {
+            border-color: #19bc9d;
+        }
+
+        .enrollment-form .btn-primary, .enrollment-form .btn-primary:active {
+            color: #fff;
+            min-width: 150px;
+            font-size: 16px;
+            background: #19bc9d !important;
+            border: none;
+        }
+
+        .enrollment-form .btn-primary:hover {
+            background: #15a487 !important; 
+        }
+
+        .enrollment-form .btn i {
+            margin-right: 5px;
+        }
+
+        .enrollment-form label {
+            opacity: 0.7;
+        }
+
+        .enrollment-form textarea {
+            resize: vertical;
+        }
+
+        .hint-text {
+            font-size: 15px;
+            padding-bottom: 20px;
+            opacity: 0.6;
+        }
+
+    </style>
+        <script>
+        $(document).ready(function(){
+            $('#inputBirthday').datepicker({
+                format: 'yyyy-mm-dd', // Adjust the format as needed
+                autoclose: true
+            });
+        });
+    </script>
 </head>
 <body>
 <body class="g-sidenav-show  bg-gray-200">
   <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
-      <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/material-dashboard/pages/dashboard " target="_blank">
-        <span class="ms-1 font-weight-bold text-white">Maplewood Academy</span>
+      <a class="navbar-brand m-0" href="https://demos.creative-tim.com/material-dashboard/pages/dashboard" target="_blank">
+        <img src="public/assets/img/Minsu.png" alt="Logo" height="30" class="me-2"> <!-- Add this line for the logo -->
+        <span class="ms-1 font-weight-bold text-white">Mindoro State University</span>
       </a>
     </div>
     <hr class="horizontal light mt-0 mb-2">
     <div class="collapse navbar-collapse  w-auto  max-height-vh-100" id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link text-white " href="../admin">
+          <a class="nav-link text-white " href="admin">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">dashboard</i>
             </div>
@@ -36,7 +144,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white active bg-gradient-primary" href="../managestudent">
+          <a class="nav-link text-white active bg-gradient-primary" href="managestudent">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
@@ -44,18 +152,18 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../enrollment">
+          <a class="nav-link text-white " href="enrollment">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
-            <span class="nav-link-text ms-1">Enrollment</span>
+            <span class="nav-link-text ms-1">Pending Students</span>
           </a>
         </li>
         <li class="nav-item mt-3">
           <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-white " href="../">
+          <a class="nav-link text-white " href="login">
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
@@ -77,37 +185,8 @@
           <h6 class="font-weight-bolder mb-0">Manage Student</h6>
         </nav>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group input-group-outline">
-              <label class="form-label">Type here...</label>
-              <input type="text" class="form-control">
-            </div>
-          </div>
           <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
-              </a>
-            </li>
-            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
-                <div class="sidenav-toggler-inner">
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                  <i class="sidenav-toggler-line"></i>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0">
-                <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-              </a>
-            </li>
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
-              </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                 <li class="mb-2">
                   <a class="dropdown-item border-radius-md" href="javascript:;">
@@ -193,60 +272,85 @@
                 <div class="table-responsive p-0">
                     <table class="table align-items-center mb-0">
                         <thead>
-                            <tr>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Code</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">First Name</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Last Name</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Course</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Section & Year</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
-                                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Actions</th>
-                            </tr>
+                            <tr class="text-center">
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">First Name</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Last Name</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Course</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Address</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Year Level</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Section</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
+                          </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <!-- Add student code here -->
-                                    <span class="text-secondary text-xs font-weight-bold">STD001</span>
+                          <?php foreach($students as $student): ?>
+                              <tr>
+                                  <td class="text-center">
+                                      <!-- Use the first name from your data source -->
+                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['first_name']; ?></span>
+                                  </td>
+                                  <td class="text-center">
+                                      <!-- Use the last name from your data source -->
+                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['last_name']; ?></span>
+                                  </td>
+                                  <td class="text-center">
+                                      <!-- Use the course from your data source -->
+                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['course']; ?></span>
+                                  </td>
+                                  <td class="text-center">
+                                      <!-- Use the section and year from your data source -->
+                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['address']; ?></span>
+                                  </td>
+                                  <td class="text-center">
+                                      <!-- Use the section and year from your data source -->
+                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['year_level']; ?></span>
+                                  </td>
+                                  <td class="text-center">
+                                      <!-- Use the section and year from your data source -->
+                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['section']; ?></span>
+                                  </td>
+                                  <td class="align-middle text-center text-sm">
+                                      <!-- Use the status from your data source (e.g., Enrolled, Pending) -->
+                                      <span class="badge badge-sm bg-gradient-success"><?= $student['status']; ?></span>
+                                  </td>
+                                  <td class="align-middle text-center text-sm">
+                                  <a href="<?= site_url('editstudent/').$student['student_id']; ?>" class="btn btn-primary">
+                                      <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+                                  </a>
+                                  <a href="#deleteEmployeeModal<?= $student['student_id']; ?>" class="btn btn-danger delete" data-toggle="modal">
+                                      <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                                  </a>
                                 </td>
-                                <td>
-                                    <!-- Add first name here -->
-                                    <span class="text-secondary text-xs font-weight-bold">John</span>
-                                </td>
-                                <td>
-                                    <!-- Add last name here -->
-                                    <span class="text-secondary text-xs font-weight-bold">Doe</span>
-                                </td>
-                                <td>
-                                    <!-- Add course here -->
-                                    <span class="text-secondary text-xs font-weight-bold">Computer Science</span>
-                                </td>
-                                <td>
-                                    <!-- Add section and year here -->
-                                    <span class="text-secondary text-xs font-weight-bold">A - 1</span>
-                                </td>
-                                <td class="align-middle text-center text-sm">
-                                    <!-- Add status badge here (e.g., Enrolled, Pending) -->
-                                    <span class="badge badge-sm bg-gradient-success">Enrolled</span>
-                                </td>
-                                <td class="align-middle">
-                                    <!-- Add action buttons with icons here -->
-                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="tooltip" data-original-title="Edit student">
-                                        <i class="fa fa-edit"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-original-title="Delete student">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-success btn-sm" data-toggle="tooltip" data-original-title="Accept student">
-                                        <i class="fa fa-check"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-original-title="View student">
-                                        <i class="fa fa-eye"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <!-- Add more rows for other students -->
-                        </tbody>
+                              </tr>
+
+
+                              <!-- Delete Modal HTML -->
+                              <div id="deleteEmployeeModal<?= $student['student_id']; ?>" class="modal fade">
+                                  <div class="modal-dialog">
+                                      <div class="modal-content">
+                                          <form>
+                                              <div class="modal-header">
+                                                  <h4 class="modal-title">Delete Student Record</h4>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                              </div>
+                                              <div class="modal-body">
+                                                  <p>Are you sure you want to delete this Record?</p>
+                                                  <p class="text-warning"><small>This action cannot be undone.</small></p>
+                                              </div>
+                                              <div class="modal-footer">
+                                                  <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                                                  <a href="<?= site_URL('delete/' . $student['student_id']); ?>" type="submit"
+                                                      class="btn btn-danger">Delete</a>
+                                              </div>
+                                          </form>
+                                      </div>
+                                  </div>
+                              </div>
+
+
+                          <?php endforeach; ?>
+                      </tbody>
                     </table>
                 </div>
             </div>
