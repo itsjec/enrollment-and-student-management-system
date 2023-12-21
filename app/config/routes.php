@@ -49,6 +49,7 @@ $router->get('/register', 'UserController::register');
 $router->get('/admin', 'UserController::admin');
 $router->get('/getRow', 'UserController::getRow');
 $router->get('/addnewstudent', 'UserController::addnewstudent');
+$router->get('/student', 'UserController::student');
 $router->get('/managestudent', 'UserController::managestudent');
 $router->get('/editstudent/(:any)', 'UserController::editstudent');
 $router->get('/enrollment', 'UserController::enrollment');
@@ -62,4 +63,3 @@ $router->get('updateStatus/(:any)', 'UserController::updateStatus');
 $router->match('insert', 'UserController::insert', 'GET|POST');
 $router->get('/search', 'UserController::search');
 $router->post('update/', 'UserController::update');
-

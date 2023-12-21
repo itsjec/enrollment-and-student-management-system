@@ -50,9 +50,9 @@ class UserController extends Controller {
         $this->call->view('managestudent', $data);
     }
 
-    public function getProfile(){
+    public function student(){
         
-        $this->call->view('profile');
+        $this->call->view('student');
     }
 
     public function admin(){
@@ -95,7 +95,7 @@ class UserController extends Controller {
         if ($user) {
 
             $this->LAVA->set_logged_in($user['user_id']);
-            redirect('');
+            redirect('addnewstudent');
 
         } else {
 
