@@ -117,7 +117,30 @@
     </script>
 </head>
 <body>
+
     <div class="overlay"></div>
+    <div class="navbar navbar-expand-lg navbar-dark" style="background-color: #005c2b;">
+    <div class="container-lg">
+        <a class="navbar-brand" href="#" style="color: #ffffff;">Mindoro State University</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="addnewstudent" style="color: #ffffff;">Enroll</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="student" style="color: #ffffff;">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login" style="color: #ffffff;">Log Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
     <div class="container-lg">
         <div class="logo-container">
             <img src="public/assets/img/Minsu.png" alt="Logo" class="logo">

@@ -258,39 +258,39 @@
                               <tr>
                                   <td class="text-center">
                                       <!-- Use the first name from your data source -->
-                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['first_name']; ?></span>
+                                      <span class="text-secondary text-xs font-weight-bold"><?php echo $student['first_name']; ?></span>
                                   </td>
                                   <td class="text-center">
                                       <!-- Use the last name from your data source -->
-                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['last_name']; ?></span>
+                                      <span class="text-secondary text-xs font-weight-bold"><?php echo$student['last_name']; ?></span>
                                   </td>
                                   <td class="text-center">
                                       <!-- Use the course from your data source -->
-                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['course']; ?></span>
+                                      <span class="text-secondary text-xs font-weight-bold"><?php echo$student['course']; ?></span>
                                   </td>
                                   <td class="text-center">
                                       <!-- Use the email from your data source -->
-                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['email']; ?></span>
+                                      <span class="text-secondary text-xs font-weight-bold"><?php echo $student['email']; ?></span>
                                   </td>
                                   <td class="text-center">
                                       <!-- Use the contact number from your data source -->
-                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['contact_number']; ?></span>
+                                      <span class="text-secondary text-xs font-weight-bold"><?php echo$student['contact_number']; ?></span>
                                   </td>
                                   <td class="text-center">
                                       <!-- Use the birthday from your data source -->
-                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['birthday']; ?></span>
+                                      <span class="text-secondary text-xs font-weight-bold"><?php echo $student['birthday']; ?></span>
                                   </td>
                                   <td class="text-center">
                                       <!-- Use the address from your data source -->
-                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['address']; ?></span>
+                                      <span class="text-secondary text-xs font-weight-bold"><?php echo $student['address']; ?></span>
                                   </td>
                                   <td class="text-center">
                                       <!-- Use the year level from your data source -->
-                                      <span class="text-secondary text-xs font-weight-bold"><?= $student['year_level']; ?></span>
+                                      <span class="text-secondary text-xs font-weight-bold"><?php echo$student['year_level']; ?></span>
                                   </td>
                                   <td class="text-center">
                                       <!-- Use the status from your data source (e.g., Enrolled, Pending) -->
-                                      <span class="badge badge-sm bg-gradient-success"><?= $student['status']; ?></span>
+                                      <span class="badge badge-sm bg-gradient-success"><?php echo$student['status']; ?></span>
                                   </td>
                               </tr>
                           <?php endforeach; ?>

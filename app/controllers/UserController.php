@@ -89,20 +89,23 @@ class UserController extends Controller {
     {
         $email = $this->io->post('email');
         $password = $this->io->post('password');
-
+    
         $user = $this->User_model->authenticateUser($email, $password);
-
+    
         if ($user) {
-
             $this->LAVA->set_logged_in($user['user_id']);
-            redirect('addnewstudent');
-
+    
+            if ($user['role'] == 'admin') {
+                redirect('admin');
+            } else {
+                redirect('addnewstudent');
+            }
         } else {
-
             $this->session->set_flashdata('errors', ['Invalid email or password']);
             redirect('login');
         }
     }
+    
 
     public function set_logged_in($user_id)
     {
@@ -243,6 +246,8 @@ class UserController extends Controller {
 
     public function insert() {
         $this->call->library('form_validation');
+
+        //$user_id = $this->LAVA->session->userdata('user_id'); 
         
         if ($this->form_validation->submitted()) {
             $this->form_validation
@@ -276,7 +281,20 @@ class UserController extends Controller {
                 $year_level = $this->io->post('year_level');
                 $section = $this->io->post('section');
     
-                $this->User_model->insert($first_name, $last_name, $course, $email, $contact_number, $birthday, $address, $year_level, $section);
+                $data = array(
+                    'first_name' => $first_name,
+                    'last_name' => $last_name,
+                    'course' => $course,
+                    'email' => $email,
+                    'contact_number' => $contact_number,
+                    'birthday' => $birthday,
+                    'address' => $address,
+                    'year_level' => $year_level,
+                    'section' => $section,
+                    'user_id' => $user_id
+                );
+
+                $this->User_model->insert($first_name, $last_name, $course, $email, $contact_number, $birthday, $address, $year_level, $section, $user_id);
     
                 $data['students'] = $this->User_model->getUsers();
     
@@ -287,13 +305,15 @@ class UserController extends Controller {
         }
     }
 
-    public function search()
-    {
-        $searchTerm = $this->io->post('searchTerm');
-        $this->load->model('User_model');
-        $data['results'] = $this->User_model->search($searchTerm);
+    public function search() {
+
+        $searchTerm = $this->input->post('searchTerm');
+        
+        $data['students'] = $this->User_model->search($searchTerm);
+      
         redirect('index', $data);
-    }
+      
+      }
     
 }
 ?>

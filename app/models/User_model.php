@@ -97,17 +97,18 @@ class User_model extends Model {
     
         return null;
     }
-	
-    public function search($searchTerm)
-    {
-        $this->db->table('students');
-        $this->db->like('first_name', $searchTerm); 
-        $this->db->or_like('last_name', $searchTerm);
-        $this->db->or_like('course', $searchTerm);
-        $this->db->or_like('year_level', $searchTerm);
-        $this->db->or_like('status', $searchTerm);
+
+      public function search($searchTerm) {
+
+        $this->db->like('first_name', $searchTerm);
+        $this->db->or_like('last_name', $searchTerm); 
+        $this->db->or_like('section', $section); 
+        $this->db->or_like('year_level', $year_level); 
+
+        $query = $this->db->get('students');
         
-        return $this->db->get_all();  
-    }
+        return $query->result_array();
+      
+      }
 }
 ?>
