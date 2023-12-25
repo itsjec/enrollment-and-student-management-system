@@ -2,9 +2,8 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Student Enrollment Form</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Patua+One">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,9 +15,10 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
 
+
+    <title>Document</title>
     <style>
         body {
             color: #333;
@@ -114,6 +114,17 @@
             max-width: 50%;
             height: auto;
         }
+
+        .icon-circle {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #15a487;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 30px
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -127,76 +138,69 @@
 
 <body>
 
-    <div class="overlay"></div>
-    <div class="navbar navbar-expand-lg navbar-dark" style="background-color: #005c2b;">
-        <div class="container-lg">
-            <a class="navbar-brand" href="#" style="color: #ffffff;">Mindoro State University</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="addnewstudent" style="color: #ffffff;">Enroll</a>
-                    </li>
-                    <li class="nav-item">
-                        <?php if (isset($student['student_id']) && $student['student_id']): ?>
+    <body>
+        <div class="container mt-5">
+            <div class="card">
+                <div class="card-header bg-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <strong>
+                                <?= htmlspecialchars($student['first_name'] . ' ' . $student['last_name'], ENT_QUOTES, 'UTF-8'); ?>
+                            </strong>
+                        </div>
+                        <a href="<?= site_url('student'); ?>" class="btn btn-danger">Cancel</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5>Personal Information</h5>
+                    <p>Personal information includes a broad range of information, that could identify the student.</p>
 
-                            <a class="nav-link" href="student" style="color: #ffffff;">Profile</a>
-                        <?php endif; ?>
-
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="login" style="color: #ffffff;">Log Out</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-lg">
-        <div class="logo-container">
-            <img src="public/assets/img/Minsu.png" alt="Logo" class="logo">
-            <h1>Welcome to Mindoro State University!!</h1>
-            <p>Calapan City Campus</p>
-        </div>
-        <div class="row">
-            <div class="col-md-10 mx-auto">
-                <div class="enrollment-form">
-                    <h1>Enroll Now!</h1>
-                    <p>Please fill up the form below</p>
-                    <form action="<?= site_url('insert'); ?>" method="post">
+                    <form action="<?= site_url('updateProfile'); ?>" method="post">
                         <div class="row">
                             <div class="col-sm-6">
+                                <input type="hidden" class="form-control" id="inputFirstName" name="student_id"
+                                    value="<?= htmlspecialchars($student['student_id'], ENT_QUOTES, 'UTF-8'); ?>"
+                                    required>
                                 <div class="form-group">
                                     <label for="inputFirstName">First Name</label>
                                     <input type="text" class="form-control" id="inputFirstName" name="first_name"
-                                        value="<?= $student['first_name'] ?? '' ?>" required>
+                                        value="<?= htmlspecialchars($student['first_name'], ENT_QUOTES, 'UTF-8'); ?>"
+                                        required>
                                 </div>
+
 
                                 <div class="form-group">
                                     <label for="inputContactNumber">Contact Number</label>
                                     <input type="text" class="form-control" id="inputContactNumber"
-                                        name="contact_number" value="<?= $student['contact_number'] ?? '' ?>" required>
+                                        value="<?= htmlspecialchars($student['contact_number'], ENT_QUOTES, 'UTF-8'); ?>"
+                                        name="contact_number" required>
                                 </div>
+
 
                                 <div class="form-group">
                                     <label for="inputBirthday">Birthday</label>
-                                    <input type="text" class="form-control" id="inputBirthday" name="birthday"
-                                        value="<?= $student['birthday'] ?? '' ?>" required>
+                                    <div class="input-group date" data-provide="datepicker">
+                                        <input type="text" class="form-control" id="inputBirthday" name="birthday"
+                                            value="<?= htmlspecialchars($student['birthday'], ENT_QUOTES, 'UTF-8'); ?>"
+                                            required>
+                                        <div class="input-group-addon">
+                                            <span class="glyphicon glyphicon-th"></span>
+                                        </div>
+                                    </div>
                                 </div>
+
 
                                 <div class="form-group">
                                     <label for="inputSection">Section</label>
-                                    <select class="form-control" id="inputSection" name="section" required>
-                                        <option value="" disabled selected>Select Section</option>
-                                        <option value="F1">F1</option>
-                                        <option value="F2">F2</option>
-                                        <option value="F3">F3</option>
-                                        <option value="F4">F4</option>
-                                        <option value="F5">F5</option>
-                                        <option value="F6">F6</option>
+                                    <select class="form-control" id="inputSection" name="section" required disabled>
+                                        <option value="" disabled>Select Section</option>
+                                        <?php $sections = ['F1', 'F2', 'F3', 'F4', 'F5', 'F6']; ?>
+                                        <?php foreach ($sections as $section): ?>
+                                            <option value="<?= htmlspecialchars($section, ENT_QUOTES, 'UTF-8'); ?>"
+                                                <?= (isset($student['section']) && $student['section'] == $section) ? 'selected' : ''; ?>>
+                                                <?= htmlspecialchars($section, ENT_QUOTES, 'UTF-8'); ?>
+                                            </option>
+                                        <?php endforeach; ?>
                                     </select>
                                 </div>
                             </div>
@@ -205,55 +209,64 @@
                                 <div class="form-group">
                                     <label for="inputLastName">Last Name</label>
                                     <input type="text" class="form-control" id="inputLastName" name="last_name"
-                                        value="<?= $student['last_name'] ?? '' ?>" required>
+                                        value="<?= htmlspecialchars($student['last_name'], ENT_QUOTES, 'UTF-8'); ?>"
+                                        required>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="inputEmail">Email</label>
-                                    <input type="email" class="form-control" id="inputEmail" name="email"
-                                        value="<?= $student['email'] ?? $email ?? '' ?>" required readonly>
+                                    <input type="email"
+                                        value="<?= htmlspecialchars($student['email'] ?? $email, ENT_QUOTES, 'UTF-8'); ?>"
+                                        class="form-control" id="inputEmail" name="email" required disabled>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="inputCourse">Course</label>
-                                    <select class="form-control" id="inputCourse" name="course">
-                                        <option value="" disabled selected>Select Course</option>
+                                    <select class="form-control" id="inputCourse" name="course" required disabled>
+                                        <option value="" disabled>Select Course</option>
                                         <?php foreach ($courses as $course): ?>
-                                            <option value="<?= $course['course_name']; ?>" <?= (isset($student['course']) && $student['course'] == $course['course_name']) ? 'selected' : '' ?>>
-                                                <?= $course['course_name']; ?>
+                                            <option
+                                                value="<?= htmlspecialchars($course['course_id'], ENT_QUOTES, 'UTF-8'); ?>"
+                                                <?= (isset($student['course']) && $student['course'] == $course['course_id']) ? 'selected' : ''; ?>>
+                                                <?= htmlspecialchars($course['course_name'], ENT_QUOTES, 'UTF-8'); ?>
                                             </option>
                                         <?php endforeach; ?>
                                     </select>
                                 </div>
 
+
                                 <div class="form-group">
                                     <label for="inputYearLevel">Year Level</label>
-                                    <select class="form-control" id="inputYearLevel" name="year_level" required>
-                                        <option value="" disabled selected>Select Year Level</option>
-                                        <option value="First Year">First Year</option>
-                                        <option value="Second Year">Second Year</option>
-                                        <option value="Third Year">Third Year</option>
-                                        <option value="Fourth Year">Fourth Year</option>
+                                    <select class="form-control" id="inputYearLevel" name="year_level" required
+                                        disabled>
+
+                                        <option value="" disabled>Select Year Level</option>
+                                        <option value="First Year" <?= $student['year_level'] == 'First Year' ? 'selected' : '' ?>>First Year</option>
+                                        <option value="Second Year" <?= $student['year_level'] == 'Second Year' ? 'selected' : '' ?>>Second Year</option>
+                                        <option value="Third Year" <?= $student['year_level'] == 'Third Year' ? 'selected' : '' ?>>Third Year</option>
+                                        <option value="Fourth Year" <?= $student['year_level'] == 'Fourth Year' ? 'selected' : '' ?>>Fourth Year</option>
+
                                     </select>
                                 </div>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <label for="inputAddress">Address</label>
                             <textarea class="form-control" id="inputAddress" name="address" rows="5"
-                                required><?= htmlspecialchars($student['address'] ?? '', ENT_QUOTES, 'UTF-8') ?></textarea>
+                                required><?= htmlspecialchars($student['address'], ENT_QUOTES, 'UTF-8'); ?></textarea>
                         </div>
 
-                        <button type="submit" class="btn btn-primary" <?= isset($student['student_id']) && $student['student_id'] ? 'disabled' : '' ?>>
-                            <i class="fa fa-paper-plane"></i> Enroll
+
+                        <button type="submit" class="btn btn-success">
+                            Save
                         </button>
                     </form>
-
                 </div>
             </div>
         </div>
-    </div>
+    </body>
+
+
+
 </body>
 
 </html>

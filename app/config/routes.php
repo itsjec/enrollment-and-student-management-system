@@ -1,5 +1,5 @@
 <?php
-defined('PREVENT_DIRECT_ACCESS') OR exit('No direct script access allowed');
+defined('PREVENT_DIRECT_ACCESS') or exit('No direct script access allowed');
 /**
  * ------------------------------------------------------------------
  * LavaLust - an opensource lightweight PHP MVC Framework
@@ -61,5 +61,7 @@ $router->get('delete/(:num)', 'UserController::delete');
 $router->get('deleteagain/(:num)', 'UserController::delete');
 $router->get('updateStatus/(:any)', 'UserController::updateStatus');
 $router->match('insert', 'UserController::insert', 'GET|POST');
-$router->get('/search', 'UserController::search');
+$router->match('/search', 'UserController::search', 'GET|POST');
 $router->post('update/', 'UserController::update');
+$router->get('profile/', 'UserController::profile');
+$router->match('updateProfile', 'UserController::updateProfile', 'GET|POST');
